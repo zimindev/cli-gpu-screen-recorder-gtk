@@ -136,6 +136,54 @@ killall -SIGUSR1 gpu-screen-recorder
 
 ---
 
+## **⌨️ Hotkeys**
+
+### **Default Hotkeys in the GTK App**
+
+| Page      | Hotkey  | Action                |
+| --------- | ------- | --------------------- |
+| Record    | `Alt+1` | Start or stop         |
+| Record    | `Alt+2` | Pause or resume       |
+| Replay    | `Alt+1` | Start or stop replay  |
+| Replay    | `Alt+2` | Save the replay       |
+| Streaming | `Alt+1` | Start or stop         |
+
+The hotkeys work only while the app is running. A saved configuration can differ from these defaults, and a hotkey can be empty.
+
+### **Change Hotkeys in the GTK App**
+
+1. Open `gpu-screen-recorder-gtk`.
+2. Open the Record, Replay or Streaming page.
+3. Click the button next to the action.
+4. Press the new key combination.
+
+Press `Backspace` to remove a hotkey or `Esc` to cancel.
+
+On Wayland, hotkeys depend on your desktop. On KDE Plasma they are managed in the system hotkey settings, and some other compositors do not support global hotkeys. X11 needs no extra setup.
+
+### **Hotkeys in i3**
+
+These hotkeys work without the GTK app. Add them to `~/.config/i3/config`, then press `$mod+Shift+c` to reload i3:
+
+```bash
+# Start replay mode
+bindsym $mod+F9 exec --no-startup-id gpu-screen-recorder -w screen -f 60 -k h264 -a default_output -c mp4 -r 300 -o ~/Videos
+
+# Save the replay
+bindsym $mod+F11 exec --no-startup-id killall -SIGUSR1 gpu-screen-recorder
+
+# Stop
+bindsym $mod+F12 exec --no-startup-id killall -SIGINT gpu-screen-recorder
+```
+
+Check that these keys are free in your config first.
+
+### **Hotkeys in Other Desktops**
+
+Add a custom shortcut in your system settings and use one of the commands from the Quick Command Reference.
+
+---
+
 ## **🎮 Quick Command Reference**
 
 | Command                                     | Action                        |
@@ -162,14 +210,6 @@ gpu-screen-recorder -w screen -f 60 -k h264 -q ultra -a default_output -o game.m
 
 # MKV keeps the footage readable if the recording is interrupted
 gpu-screen-recorder -w screen -f 60 -k h264 -a default_output -c mkv -o game.mkv
-```
-
-Hotkeys for i3 (`~/.config/i3/config`):
-
-```bash
-bindsym $mod+F9 exec --no-startup-id gpu-screen-recorder -w screen -f 60 -k h264 -a default_output -c mp4 -r 300 -o ~/Videos
-bindsym $mod+F10 exec --no-startup-id killall -SIGUSR1 gpu-screen-recorder
-bindsym $mod+F11 exec --no-startup-id killall -SIGINT gpu-screen-recorder
 ```
 
 ---
