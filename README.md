@@ -16,11 +16,34 @@ sudo pacman -S gpu-screen-recorder
 yay -S gpu-screen-recorder-gtk
 ```
 
-### **Ubuntu/Debian 🐳, Fedora/RHEL 🎩, OpenSUSE 🦎**
+### **Ubuntu/Debian 🐳**
 
 ```bash
-flatpak install flathub com.dec05eba.gpu_screen_recorder
+sudo apt update
+sudo apt install flatpak
+flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install --user flathub com.dec05eba.gpu_screen_recorder
 ```
+
+### **Fedora/RHEL 🎩**
+
+```bash
+sudo dnf install flatpak
+flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install --user flathub com.dec05eba.gpu_screen_recorder
+```
+
+### **OpenSUSE 🦎**
+
+```bash
+sudo zypper install flatpak
+flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install --user flathub com.dec05eba.gpu_screen_recorder
+```
+
+Log out and back in if the app does not appear in the menu after installing it.
+
+### **Run from Flatpak**
 
 Run the app:
 
